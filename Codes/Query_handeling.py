@@ -86,19 +86,19 @@ while(Query!="NULL"):
     
     result= list()
     if len(operators)==1:
-        if operators[0]=="and":
+        if operators[0]=="and" or operators[0]=="&":
             result= AND(posting_lists[0], posting_lists[1])
         
-        elif operators[0]=="or":
+        elif operators[0]=="or" or operators[0]=="|":
             result= OR(posting_lists[0], posting_lists[1])
         else:
             result= NOT(final_dict[operators[0]])
         
     else:
         for i in range(0, len(operators)):
-            if operators[i]=="and":
+            if operators[i]=="and" or operators[i]=="&":
                 result= AND(posting_lists[0], posting_lists[1])
-            elif operators[i]=="or":
+            elif operators[i]=="or" or operators[i]=="|":
                 result= OR(posting_lists[0], posting_lists[1])
             else:
                 result= AND(posting_lists[0], NOT(posting_lists[1]))

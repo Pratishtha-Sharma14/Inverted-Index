@@ -3,7 +3,6 @@ import csv
 from collections import Counter
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer 
-from textblob import TextBlob as Tb
 
 #Creating a dictionary containing every text file
 path= str(input("Enter the path to the folder\n"))
@@ -31,10 +30,7 @@ def stop_words(text):
 #Lemmatization of the data
 def lemmatization(text):
     lemmatizer= WordNetLemmatizer() 
-    #ps= PorterStemmer()          
     text = " ".join([lemmatizer.lemmatize(word) for word in text.split()])#Joins lemmatized verbs list with a space " "
-    blob= Tb(text)
-    text= " ".join([word.singularize() for word in blob.words])
     return text
 
 #creating a vocaubulary
@@ -51,7 +47,7 @@ def key_words(dictionary):
     max_freq= dictionary[key_max]
     
     #taking 90% as cutoff
-    limit= int(90/100*max_freq)
+    limit= int(99/100*max_freq)
     
     for word in dictionary:
         if dictionary[word]<=limit:
